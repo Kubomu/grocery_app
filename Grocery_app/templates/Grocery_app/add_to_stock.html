@@ -1,0 +1,28 @@
+{% extends "Grocery_app/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+<br/><br><br>
+<div class="container">
+  <form action="" method="POST">
+    <h1 class="text-center">Update Stock Levels</h1>
+    <br/>
+    {% csrf_token %}
+    {{ form | crispy }}
+
+    <input 
+      type = "submit"
+      value = "Update Stock"
+      class="btn btn-secondary btn"
+      type="button"
+      />
+
+  </form>
+
+</div><br><br>
+
+
+{% endblock  %}

@@ -1,0 +1,124 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 0%;
+    min-height: 10vh;
+
+}
+
+.container {
+    max-width: 500px;
+    background: white;
+    padding: 2rem;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgb(66, 42, 66);
+    margin: 15px 0;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e27c00;
+    color: white;
+    text-align: center;
+  }
+
+  .navbar {
+    background-color: #e27c00;
+
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fef3c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.receipt-container {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.receipt-details,
+.item-list {
+    margin-bottom: 20px;
+}
+
+.item-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.item-list th,
+.item-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.item-list th {
+    background-color: #f2f2f2;
+}
+
+.item-list tfoot td {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+}
+
+.social-icons {
+    display: flex; /* Align icons horizontally */
+    justify-content: center; /* Center the icons */
+    gap: 20px; /* Space between icons */
+    padding: 20px 0; /* Padding around the container */
+}
+.social-icon:hover .fa-facebook {
+    color: #2d4373;
+}
+.social-icon:hover .fa-twitter {
+    color: #1991da;
+}
+
+.social-icon:hover .fa-instagram {
+    color: #c13584;
+}
+
+.social-icon:hover .fa-linkedin {
+    color: #005582;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  th, td {
+    background-color: #96D4D4;
+  }
+     

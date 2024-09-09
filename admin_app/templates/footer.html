@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Footer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Ensure the body has some padding at the bottom to prevent content from being hidden */
+        body {
+            margin: 0;
+            padding-bottom: 50px;
+            /* Adjust this value based on footer height */
+            font-family: Arial, sans-serif;
+            /* Optional font styling */
+        }
+
+        /* Content styling (optional) */
+        .content {
+            padding: 20px;
+        }
+
+        /* Fixed footer styling */
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 2px solid #ccc;
+            /* Optional: add a top border */
+            z-index: 1000;
+            /* Ensure it stays on top */
+        }
+
+        /* Center the button on the page */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Style for the login button */
+        .login-button {
+            background-color: #FF4500;
+            /* Dark Orange Color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            /* Makes the button oval-shaped */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Change color on hover */
+        .login-button:hover {
+            background-color: #E03D00;
+            /* Slightly darker orange on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <!-- Your main content goes here -->
+        <p>Your content here...</p>
+        <div class="container">
+            <button class="login-button">Login</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Your footer text here</p>
+    </footer>
+</body>
+
+</html>

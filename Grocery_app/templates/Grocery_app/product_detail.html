@@ -1,0 +1,129 @@
+{% extends 'Grocery_app/base.html' %}
+{% block content %}
+<br><br><br><br>
+
+<div class="container receipt">
+    <h2 class="receipt-title">Stock Inventory</h2>
+
+    <div class="receipt-details">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Item name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Total Quantity (Kgs)</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Unit Price (UGX)</th>
+                    <th scope="col">Sell Item</th>
+                    <th scope="col">Update Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in product %}
+                <tr>
+                    <td>{{ product.item_name }}</td>
+                    <td>{{ product.stock_type }}</td>
+                    <td>{{ product.total_quantity }}</td>
+                    <td>{{ product.stock_branch }}</td>
+                    <td>UGX {{ product.unit_price }}</td>
+                    <td>
+                        <a href="{% url 'issue_item' product.id %}">
+                            <input type="submit" value="Sell Item" class="btn btn-secondary"style="background-color: #e27c00;" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'add_to_stock' product.id %}">
+                            <input type="submit" value="Update Stock" class="btn btn-secondary" />
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div><br><br>
+
+
+<style>
+  body {
+      background-color: #fff5c5;
+      color: #984208;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  }
+  
+  h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: #984208;
+  }
+  
+  form {
+      background-color: #fff;
+  }
+  
+  .form-group label {
+      font-weight: 500;
+      color: #984208;
+      margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ffd700;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      color: #984208;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+      outline: none;
+      border-color: #E03D00;
+      box-shadow: 0 0 0 2px rgba(224, 61, 0, 0.2);
+  }
+  
+  .btn-primary {
+      background-color: #E03D00;
+      border-color: #E03D00;
+      font-weight: 500;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      color: #fff;
+      
+  }
+  
+  .btn-primary:hover,
+  .btn-primary:focus {
+      background-color: #c03400;
+      border-color: #c03400;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .text-danger {
+      color: #E03D00;
+      font-size: 0.9rem;
+      margin-top: 5px;
+  }
+
+  /* Ensure placeholder text is visible */
+  ::placeholder {
+      color: #984208;
+      opacity: 0.7;
+  }
+</style>
+
+{% endblock %}

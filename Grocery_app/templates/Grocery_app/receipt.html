@@ -1,0 +1,89 @@
+{% extends 'Grocery_app/base.html'%}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">All Receipts</h1>
+    
+    <div class="row">
+    {% for sale in sales %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">Customer: {{ sale.issued_to | title }}</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Item
+                            <span class="badge bg-secondary rounded-pill">{{ sale.item }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Amount Paid
+                            <span class="badge bg-success rounded-pill">UGX{{ sale.amount_received }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Quantity
+                            <span class="badge bg-info rounded-pill">{{ sale.quantity }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Change Collected
+                            <span class="badge bg-warning text-dark rounded-pill">UGX {{ sale.get_change }}</span>
+                        </li>
+                    </ul>
+                    <h4 class="text-center mb-3">Total Price: <span class="text-primary">UGX {{ sale.get_total }}</span></h4>
+                    <div class="text-center">
+                        <a href="{% url 'receipt_detail' sale.id %}" class="btn btn-danger">
+                            <i class="fas fa-print me-2"></i> Print Receipt
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div><br><br>
+
+<style>
+    body {
+        background-color: #fff5c5;
+    }
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+        color: #984208;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+    }
+    .card {
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-header {
+        background-color: #bb5502 !important;
+    }
+    .btn-danger {
+        background-color: #E03D00;
+        border-color: #E03D00;
+    }
+    .btn-danger:hover {
+        background-color: #c03400;
+        border-color: #c03400;
+    }
+    .list-group-item {
+        background-color: #fff5c5;
+        border-color: #E03D00;
+    }
+    .badge {
+        font-size: 0.9rem;
+    }
+</style>
+
+
+
+{% endblock %}

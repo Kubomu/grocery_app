@@ -1,0 +1,134 @@
+{% extends 'Grocery_app/base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #fff5c5;
+        color: #984208;
+    }
+    
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        margin-top: 50px;
+    }
+    
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        color: #984208;
+    }
+    
+    form {
+        background-color: #fff;
+        margin-bottom: 20px;
+    }
+    
+    form input,
+    form select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ffd700;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        color: #984208;
+        margin-bottom: 10px;
+    }
+    
+    form input:focus,
+    form select:focus {
+        outline: none;
+        border-color: #E03D00;
+        box-shadow: 0 0 0 2px rgba(224, 61, 0, 0.2);
+    }
+    
+    .btn-secondary {
+        background-color: #E03D00;
+        border-color: #E03D00;
+        font-weight: 500;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        color: #fff;
+    }
+    
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+        background-color: #c03400;
+        border-color: #c03400;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .table {
+        color: #984208;
+    }
+    
+    .table thead {
+        background-color: #E03D00;
+        color: #fff;
+    }
+    
+    .table th, .table td {
+        border: none;
+    }
+    
+    .table tbody tr:nth-of-type(odd) {
+        background-color: #fff9e6;
+    }
+    
+    .table tbody tr:hover {
+        background-color: #ffe699;
+    }
+</style>
+
+<div class="container">
+    <h1 class="text-center">IN-STOCK MERCHANDISE</h1>
+    <br>
+    
+    <div class="container">
+        <form action="" method="GET">
+            {{ product_filters.form }}
+            <input type="submit" value="Search Stock" class="btn btn-secondary"/>
+        </form>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Item name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Unit Price(UGX)</th>
+                <th scope="col">Detail</th>
+                <th scope="col">Remove Item</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.item_name }}</td>
+                <td>{{ product.stock_type }}</td>
+                <td>{{ product.total_quantity }}</td>
+                <td>{{ product.stock_branch }}</td>
+                <td>UGX {{ product.unit_price }}</td>
+                <td>
+                    <a href="{% url 'product_detail' product.id %}">
+                        <input type="submit" value="SELL ITEM" class="btn btn-secondary btn-sm" />
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_detail' product.id %}">
+                        <input type="submit" value="Delete ITEM" class="btn btn-secondary btn-sm" />
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

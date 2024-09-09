@@ -1,0 +1,120 @@
+{% extends 'Grocery_app/base.html'%} 
+{% block content %}
+
+<br><br><br>
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="receipt border p-4 shadow-lg bg-white rounded">
+                <header class="text-center mb-4">
+                    <h1 class="receipt-title">Happy Hoe Grocery Ltd</h1>
+                    <p>Lumumba Street, Kampala, Uganda</p>
+                    <p>Phone: +256 7650-22499</p>
+                </header>
+
+                <section class="receipt-details mb-4">
+                    <p><strong>Receipt #: </strong>0012</p>
+                    <p><strong>Date: </strong>{{receipt.date_sold}}</p>
+                    <p><strong>Customer Name: </strong>{{ receipt.issued_to | title }}</p>
+                </section>
+
+                <section class="item-list mb-4">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-center">Quantity (kgs)</th>
+                                <th class="text-right">Total Bill (Ugx)</th>
+                                <th class="text-right">Amount Paid (Ugx)</th>
+                                <th class="text-right">Total Change (Ugx)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ receipt.item | title }}</td>
+                                <td class="text-center">{{ receipt.quantity }}</td>
+                                <td class="text-right">Ugx {{ receipt.get_total | title }}</td>
+                                <td class="text-right">Ugx {{ receipt.amount_received }}</td>
+                                <td class="text-right">Ugx {{ receipt.get_change }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                        <p><h4><strong>Thank you for your purchase!</strong></h4></p>
+
+                </section>
+
+                
+            </div>
+        </div>
+    </div>
+</div><br>
+
+<!-- Print Receipt Button -->
+<button id="printReceiptButton" onclick="printReceipt()" style="margin: 0 20% 0 40%;">Print</button>
+
+<br><br>
+
+<script>
+    // JavaScript function to trigger print
+    function printReceipt() {
+        window.print();  // Opens the print dialog
+    }
+</script>
+
+
+
+
+<style>
+    body {
+        background-color: #fff5c5;
+        color: #984208;
+    }
+    .receipt {
+        background-color: #ffffff;
+        border: 2px solid #E03D00;
+    }
+    .receipt-title {
+        color: #E03D00;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+    }
+    .receipt-details {
+        border-top: 1px dashed #984208;
+        border-bottom: 1px dashed #984208;
+        padding: 15px 0;
+    }
+    .table {
+        color: #984208;
+    }
+    .table thead {
+        background-color: #E03D00;
+        color: #ffffff;
+    }
+    .table-bordered, .table-bordered td, .table-bordered th {
+        border-color: #984208;
+    }
+
+button {
+    background-color: #bb5502; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Button padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #9e4701; /* Darker shade on hover */
+}
+
+    
+</style>
+
+
+{% endblock %}
