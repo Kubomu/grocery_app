@@ -1,56 +1,158 @@
-{% extends 'Grocery_app/base.html'%} {% block content%}
-<br></br>
+{% extends 'Grocery_app/base.html'%}
+{% block content%}
+<style>
+    body {
+        background-color: #faf4eb;
+        color: #984208;
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(152, 66, 8, 0.1);
+        margin-top: 50px;
+    }
+    
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        color: #984208;
+        text-shadow: 1px 1px 2px rgba(152, 66, 8, 0.1);
+    }
+    
+    .custom-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+    
+    .custom-table thead th {
+        background-color: #a0826c;  /* Earthy brown */
+        color: #ffffff;
+        padding: 15px;
+        text-align: left;
+        border: none;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .custom-table thead th:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #c4a794, transparent);  /* Lighter brown */
+        opacity: 0.3;
+    }
+    
+    .custom-table tbody tr {
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(152, 66, 8, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .custom-table tbody tr:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(152, 66, 8, 0.2);
+    }
+    
+    .custom-table td {
+        padding: 15px;
+        border: none;
+        color: #984208;
+    }
+    
+    .custom-table tbody tr td:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    
+    .custom-table tbody tr td:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    
+    .highlight-card {
+        background-color: #f0e6d9;  /* Light beige */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .highlight-item {
+        text-align: center;
+        flex: 1;
+        min-width: 150px;
+        margin: 10px;
+    }
+    
+    .highlight-label {
+        font-size: 0.9em;
+        color: #a0826c;  /* Earthy brown */
+        margin-bottom: 5px;
+    }
+    
+    .highlight-value {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #984208;  /* Keeping the orange for contrast */
+    }
+</style>
 
-<div class = "container">
-<h1 class = "text-center">TOTAL SALES MADE</h1><br>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Total Amount Received</th>
-        <th scope="col">Total Change Given</th>
-        <th scope="col">Net Amount</th>
-      </tr>
-    </thead>  
-    <tbody>
-      <tr>    
-        <td>UGX{{total}}</td>
-        <td>UGX{{change}}</td>
-        <td>UGX{{net}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+    <h1 class="text-center">TOTAL SALES MADE</h1><br>
+    
+    <div class="highlight-card">
+        <div class="highlight-item">
+            <div class="highlight-label">Total Amount Expected</div>
+            <div class="highlight-value">UGX{{total_expected}}</div>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-label">Total Amount Received</div>
+            <div class="highlight-value">UGX{{total}}</div>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-label">Total Debt</div>
+            <div class="highlight-value">UGX{{total_change}}</div>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-label">Net Amount</div>
+            <div class="highlight-value">UGX{{net}}</div>
+        </div>
+    </div>
+
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Customer name</th>
+                <th>Item Bought</th>
+                <th>Quantity</th>
+                <th>Unit Price(UGX)</th>
+                <th>Total Cost</th>
+                <th>Amount Paid</th>
+                <th>Change Collected</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sale in sales %}
+            <tr>
+                <td>{{sale.issued_to | title}}</td>
+                <td>{{sale.item | title}}</td>
+                <td>{{sale.quantity}}</td>
+                <td>UGX{{sale.unit_price}}</td>
+                <td>UGX{{sale.get_total}}</td>
+                <td>UGX{{sale.amount_received}}</td>
+                <td>UGX{{sale.get_change}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
-<br></br>
-
-<div class = "container">
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Customer name</th>
-        <th scope="col">Item Bought</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Unit Price(UGX)</th>
-        <th scope="col">Total Cost</th>
-        <th scope="col">Amount Paid</th>
-        <th scope="col">Change Collected</th>
-      </tr>
-    </thead>
-    {% for sale in sales %}
-    <tbody>
-      <tr> 
-        <!--<a href="/receipt_detail/{{ sale.id }}"></a>-->   
-        <td>{{sale.issued_to | title}}</td>
-        <td>{{sale.item | title}}</td>
-        <td>{{sale.quantity}}</td>
-        <td>UGX{{sale.unit_price}}</td>
-        <td>UGX{{sale.get_total}}</td>
-        <td>UGX{{sale.amount_received}}</td>
-        <td>UGX{{sale.get_change}}</td>
-      </tr>
-    </tbody>
-    {% endfor %}
-  </table>
-</div><br><br>
-
-
 {% endblock%}

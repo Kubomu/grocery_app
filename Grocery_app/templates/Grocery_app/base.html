@@ -66,37 +66,88 @@
       z-index: 1000;
       /* Ensure it stays on top */
     }
+    .navbar {
+      background-color: #e27c00 !important;
+      padding: 10px 0;
+    }
+  
+    .navbar-brand {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 2rem;
+      color: #984208 !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+  
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+  
+    .navbar-toggler {
+      border: none;
+      background-color: #984208;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+  
+    .navbar-toggler:hover {
+      background-color: #bb5502;
+    }
+  
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  
+    .navbar-toggler-text {
+      color: #ffffff;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+  
+    .offcanvas {
+      background-color: #fff5c5;
+    }
+  
+    .offcanvas-title {
+      font-family: 'Lobster', cursive;
+      color: #984208;
+    }
+  
+    .nav-link {
+      color: #984208 !important;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+  
+    .nav-link:hover, .nav-link.active {
+      background-color: #e27c00;
+      color: #ffffff !important;
+    }
+  
+    .dropdown-menu {
+      background-color: #fff5c5;
+      border: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  
+    .dropdown-item {
+      color: #984208;
+      transition: all 0.3s ease;
+    }
+  
+    .dropdown-item:hover {
+      background-color: #e27c00;
+      color: #ffffff;
+    }
   </style>
 
 
 </head>
 
 <body>
-
-
-<!--
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="" aria-controls="navbarNav"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="nav navbar-nav ml-auto">
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">RECORD A SALE</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ALL SALES</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">LOGOUT</a>
-        </li>
-        
-      </ul>
-  </nav>-->
 
   <nav class="navbar navbar-dark bg-tertiary fixed-top">
     <div class="container-fluid">
@@ -125,17 +176,21 @@
           <li class="nav-item">
               <a class="nav-link" href="{% url 'credit_sale_list' %}">Credit Sales List</a>
           </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                LOGOUT
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="{% url "logout" %}">Logout</a></li>
-              </ul>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'all_sales' %}">All Sales</a>
+        </li>
+        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              LOGOUT
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="{% url "logout" %}">Logout</a></li>
+            </ul>
+          </li>
             {% endif %}
           </ul>
         </div>

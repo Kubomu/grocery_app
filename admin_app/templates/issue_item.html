@@ -14,3 +14,171 @@
   </form>
 </div>
 {% endblock %}
+
+
+<!--HOME.HTML
+
+{% extends 'Grocery_app/base.html' %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+    body {
+        background-color: #fff5c5;
+        color: #984208;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .navbar-brand, .slogan {
+        font-family: 'Lobster', cursive;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(152, 66, 8, 0.2);
+        margin-top: 50px;
+    }
+
+    h1 {
+        font-weight: 600;
+        color: #984208;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .search-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .search-container input[type="text"] {
+        width: calc(100% - 120px);
+        padding: 10px 40px 10px 10px;
+        border: 2px solid #e27c00;
+        border-radius: 8px 0 0 8px;
+        font-size: 1rem;
+        color: #984208;
+    }
+
+    .search-container .search-icon {
+        position: absolute;
+        right: 125px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #984208;
+    }
+
+    .search-container .btn-search {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #e27c00;
+        border-color: #e27c00;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 0 8px 8px 0;
+        transition: all 0.3s ease;
+    }
+
+    .search-container .btn-search:hover {
+        background-color: #984208;
+        border-color: #984208;
+    }
+
+    .table {
+        color: #bb5502;
+    }
+
+    .table thead {
+        background-color: #e27c00;
+        color: #fff;
+    }
+
+    .table th, .table td {
+        border: none;
+        vertical-align: middle;
+    }
+
+    .table tbody tr:nth-of-type(odd) {
+        background-color: #fff9e6;
+    }
+
+    .table tbody tr:hover {
+        background-color: #ffe699;
+    }
+
+    .btn-sell {
+        background-color: #e27c00;
+        border-color: #e27c00;
+        color: white;
+    }
+
+    .btn-sell:hover {
+        background-color: #984208;
+        border-color: #984208;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+    .btn-delete:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+        color: white;
+    }
+</style>
+
+<div class="container">
+    <h1>IN-STOCK MERCHANDISE</h1>
+
+    <div class="search-container">
+        <form action="" method="GET">
+            {{ product_filters.form.as_p }}
+            <i class="fas fa-search search-icon"></i>
+            <button type="submit" class="btn btn-search">Search Stock</button>
+        </form>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Item name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Unit Price(UGX)</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            
+            <tr>
+                <td>{{ product.item_name }}</td>
+                <td>{{ product.stock_type }}</td>
+                <td>{{ product.total_quantity }}</td>
+                <td>{{ product.stock_branch }}</td>
+                <td>UGX {{ product.unit_price }}</td>
+                <td>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-sell btn-sm">SELL ITEM</a>
+                    <a href="{% url 'delete_detail' product.id %}" class="btn btn-delete btn-sm">Delete ITEM</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div><br><br>
+
+<div class="d-flex justify-content-between">
+     Back Button 
+    <a href="{% url 'login2' %}" class="btn btn-secondary" style="margin: 0 20% 0 40%;">Previous Page</a>
+  </div><br><br>
+  
+{% endblock %}-->

@@ -69,7 +69,11 @@ def issue_item(request,pk):
 
 def all_sales(request):
     sales = Sale.objects.all().order_by('-id')
-    return render(request, 'Grocery_app/all_sales.html', {'sales': sales})
+    total_expected = sum([items.get_total() or 0  for items in sales])
+    total = sum([items.amount_received or 0 for items in sales])
+    total_change = sum([items.get_change() or 0  for items in sales])
+    net = total_expected - total
+    return render(request, 'Grocery_app/all_sales.html', {'sales': sales, 'total': total, 'total_change': total_change, 'net': net, 'total_expected': total_expected})
 
 @login_required
 def receipt(request):
@@ -161,3 +165,7 @@ def add_to_stock(request, pk):
             return redirect('home')
     #   help us render our data  # 
     return render(request, 'Grocery_app/add_to_stock.html', {'form':form})
+
+
+
+

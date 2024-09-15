@@ -8,6 +8,23 @@ class SaleForm(ModelForm):
     class Meta:
         model = Sale
         fields = ['quantity', 'amount_received', 'issued_to', 'modality']
+        
+        labels = {
+            'quantity': 'Quantity',
+            'amount_received': 'Amount Received',
+            'issued_to': 'Issued To', 
+            'modality': 'Modality',
+            
+        }
+
+        quantity = forms.CharField(max_length=50,  error_messages={'required': 'Please fill in the quantity', 'max_length': 'Quantity should  not be longer than 50 characters'}, widget=forms.TextInput(attrs={'placeholder':'1', 'type': 'number'}), required=False)
+    
+        amount_received = forms.CharField(max_length=50, error_messages={'required':'Please enter amount paid', 'max_length':'Amount should not be more than 50 characters'}, widget=forms.TextInput(attrs={'placeholder': '50000', 'type': 'number'}), required=False)
+    
+        issued_to = forms.CharField(max_length=20, error_messages={'required':'Please enter a name', 'max_length':'Name should not be more than 20 characters'}, widget=forms.TextInput(attrs={'placeholder': 'Melissa Bloom'}), required=False)
+    
+        modality = forms.CharField(error_messages={'required':'Please select mode of payment'}, widget=forms.DateInput(attrs={'placeholder': 'select'}), required=False)
+    
 
 
 
@@ -28,5 +45,6 @@ class AddForm(forms.ModelForm):
         model = Stockx
         fields = ['total_quantity'] #Its the only field that needs to be updated when stock is added by the sales agent.
 
-      
+ 
+
         

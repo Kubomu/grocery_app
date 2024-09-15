@@ -71,7 +71,6 @@
       background-color: #E03D00;
     }
 
-    /* Grid layout for items in stock */
     .menu-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -152,7 +151,6 @@
         <h3>Cranberry Beans</h3>
         <p>Quantity: {{ items.1.total_quantity }} kgs</p>
       </div>
-      <!-- Repeat for other stock types -->
       <div class="menu-item">
         <img src="{% static 'images/super_rice.jpeg' %}" alt="Rice" class="">
         <h3>Long grain/Super rice</h3>
@@ -203,13 +201,11 @@
         <h3>Soy Beans</h3>
         <p>Quantity: {{ items.11.total_quantity }} kgs</p>
       </div>
-      <div class="menu-item">
-        <img src="{% static 'images/mungbeans.jpeg' %}" alt="maize" class="">
+      <!--<div class="menu-item">
+        <img src="{% static 'images/mungbeans.jpeg' %}" alt="beans" class="">
         <h3>Green mung beans</h3>
         <p>Quantity: {{ items.12.total_quantity }} kgs</p>
-      </div>
-
-  
+      </div>-->
   
     </div>
   </div>

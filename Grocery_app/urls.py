@@ -28,6 +28,7 @@ urlpatterns = [
     path('', views.produce_list, name='produce_list'),
     path('add_to_stock/<str:pk>/', views.add_to_stock, name='add_to_stock'),
     path('issue_item/<str:pk>/', views.issue_item, name='issue_item'),
+    path('all_sales/', views.all_sales, name='all_sales'),
    
 ]
 
