@@ -31,26 +31,28 @@ class Stockx(models.Model):
 
 
 class Sale(models.Model):
-    CASH = 'cash'
+    """CASH = 'cash'
     CREDIT = 'credit'
     
     SALE_MODALITY_CHOICES = [
         (CASH, 'Cash'),
         (CREDIT, 'Credit'),
-    ]
+    ]"""
+    
     #associating property item with the name of the stock being kept in the stock table/model.
     item = models.ForeignKey(Stockx,on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0, null=True, blank=True)
-    amount_received = models.IntegerField(default=0, null=True, blank=True)
+    quantity = models.IntegerField(default=0, null=False, blank=False)
+    amount_received = models.IntegerField(default=0, null=False, blank=False)
     issued_to = models.CharField(max_length=50, null=True, blank=True)
     unit_price = models.IntegerField(default=0, null=True, blank=True)
     date_sold = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     receipt_number = models.PositiveIntegerField(unique=True, blank=True, null=True)
-    modality = models.CharField(
+    
+    """modality = models.CharField(
         max_length=6, 
         choices=SALE_MODALITY_CHOICES,  
         default=CASH,  
-    )
+    )"""
 
 
     """def save(self, *args, **kwargs):
@@ -59,7 +61,6 @@ class Sale(models.Model):
             self.receipt_number = (last_sale.receipt_number + 1) if last_sale else 1
         super(Sale, self).save(*args, **kwargs)"""
 
-    
     
       
       

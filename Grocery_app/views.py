@@ -46,6 +46,7 @@ def delete_detail(request,product_id):
 def issue_item(request,pk):
     #accessing all items in the stock model
     issued_item = Stockx.objects.get(id = pk)
+    #issued_item = get_object_or_404(Stockx, id = pk)
     #accessing our form 
     sales_form = SaleForm(request.POST)
     #receiving data from the form and saving from the model
