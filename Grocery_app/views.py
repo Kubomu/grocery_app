@@ -20,7 +20,7 @@ from django.contrib.auth import authenticate, login as auth_login
 # Create your views here.
 def index(request):
     items = Stockx.objects.all().order_by('-id')
-    return render(request,'Grocery_app/index2.html', {'items': items})
+    return render(request,'Grocery_app/index.html', {'items': items})
 
 
 @login_required
